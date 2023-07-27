@@ -98,7 +98,7 @@ impl ECScalar for RistrettoScalar {
     fn zero() -> RistrettoScalar {
         RistrettoScalar {
             purpose: "zero",
-            fe: SK::zero().into(),
+            fe: SK::ZERO.into(),
         }
     }
 
@@ -127,12 +127,22 @@ impl ECScalar for RistrettoScalar {
 
     fn deserialize(bytes: &[u8]) -> Result<Self, DeserializationError> {
         let bytes: [u8; 32] = bytes.try_into().or(Err(DeserializationError))?;
-        Ok(RistrettoScalar {
-            purpose: "from_bigint",
-            fe: SK::from_canonical_bytes(bytes)
-                .ok_or(DeserializationError)?
-                .into(),
-        })
+        // TODO: check if this is correct
+        let fe = SK::from_canonical_bytes(bytes);
+        if bool::from(fe.is_none()) {
+            Err(DeserializationError)
+        } else {
+            Ok(RistrettoScalar {
+                purpose: "deserialize",
+                fe: fe.unwrap().into(),
+            })
+        }
+        // Ok(RistrettoScalar {
+        //     purpose: "from_bigint",
+        //     fe: SK::from_canonical_bytes(bytes)
+        //         .ok_or(DeserializationError)?
+        //         .into(),
+        // })
     }
 
     fn add(&self, other: &Self) -> RistrettoScalar {
@@ -274,6 +284,7 @@ impl ECPoint for RistrettoPoint {
         buffer[32 - n..].copy_from_slice(bytes);
 
         CompressedRistretto::from_slice(&buffer)
+            .expect("buffer must be 32 bytes")
             .decompress()
             .ok_or(DeserializationError)
             .map(|ge| RistrettoPoint {

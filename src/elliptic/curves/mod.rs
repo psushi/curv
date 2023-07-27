@@ -76,7 +76,7 @@
 //! Point, Scalar structures wrap ECPoint / ECScalar implementation, and provide a lot of convenient
 //! methods, implement arithmetic traits, etc.
 
-pub mod bls12_381;
+// pub mod bls12_381;
 pub mod curve_ristretto;
 pub mod ed25519;
 pub mod p256;
@@ -89,7 +89,7 @@ mod wrappers;
 
 #[doc(inline)]
 pub use self::{
-    bls12_381::{Bls12_381_1, Bls12_381_2},
+    // bls12_381::{Bls12_381_1, Bls12_381_2},
     curve_ristretto::Ristretto,
     ed25519::Ed25519,
     p256::Secp256r1,

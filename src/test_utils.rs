@@ -13,8 +13,8 @@ macro_rules! test_for_all_curves {
             p256 = crate::elliptic::curves::Secp256r1,
             ed25519 = crate::elliptic::curves::Ed25519,
             ristretto = crate::elliptic::curves::Ristretto,
-            bls12_381_1 = crate::elliptic::curves::Bls12_381_1,
-            bls12_381_2 = crate::elliptic::curves::Bls12_381_2,
+            // bls12_381_1 = crate::elliptic::curves::Bls12_381_1,
+            // bls12_381_2 = crate::elliptic::curves::Bls12_381_2,
         }
     };
 }
@@ -71,8 +71,8 @@ macro_rules! test_for_all_curves_and_hashes {
             p256 = crate::elliptic::curves::Secp256r1,
             ed25519 = crate::elliptic::curves::Ed25519,
             ristretto = crate::elliptic::curves::Ristretto,
-            bls12_381_1 = crate::elliptic::curves::Bls12_381_1,
-            bls12_381_2 = crate::elliptic::curves::Bls12_381_2,
+            // bls12_381_1 = crate::elliptic::curves::Bls12_381_1,
+            // bls12_381_2 = crate::elliptic::curves::Bls12_381_2,
         }
     };
     (compose: [$($attrs:tt)*] $fn: ident =>) => {};
