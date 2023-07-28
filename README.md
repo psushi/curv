@@ -4,6 +4,21 @@
 [![License](https://img.shields.io/crates/l/curv-kzen)](LICENSE)
 [![dependency status](https://deps.rs/repo/github/ZenGo-X/curv/status.svg)](https://deps.rs/repo/github/ZenGo-X/curv)
 
+
+## Note: 
+This is a fork of Curv, with the following changes:
+- Updated `secp256k1` from `0.20.0` -> `0.23.0` (to remove use of `rand@0.6` and `rand_os` which is known to cause issues with `wasm32-unknown-unknown`)
+- Updated `rand` from `0.7` -> `0.8` 
+- Removed use of `rand@0.6` 
+- Updated `curve25519-dalek` from `3` to `4` (to use `rand@0.8`)
+- Removed the bls12-381 curve support (to remove use of `ff_zeroize` which is known to cause issues with `wasm32-unknown-unknown`). Our use case only needs support for secp256k1
+- Removed `pairing_plus`, `old_sha2` unused deps. 
+- Refactored curv to adopt the changes. All tests passing ✅
+- Acknowledge that `num-bigint` support is experimental and should not be used in production as it's not consider secure.
+
+
+
+
 Curv
 =====================================
 Curv contains an extremely simple interface to onboard new elliptic curves. 
