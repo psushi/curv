@@ -10,7 +10,7 @@ pub mod arithmetic;
 pub use crate::arithmetic::BigInt;
 use std::{error, fmt};
 
-pub mod cryptographic_primitives;
+// pub mod cryptographic_primitives;
 
 mod marker;
 pub use marker::HashChoice;

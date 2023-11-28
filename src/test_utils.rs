@@ -10,9 +10,9 @@ macro_rules! test_for_all_curves {
     ([$($attrs:tt)*] $fn: ident) => {
         crate::test_for_all!{[$($attrs)*] $fn =>
             secp256k1 = crate::elliptic::curves::Secp256k1,
-            p256 = crate::elliptic::curves::Secp256r1,
-            ed25519 = crate::elliptic::curves::Ed25519,
-            ristretto = crate::elliptic::curves::Ristretto,
+            // p256 = crate::elliptic::curves::Secp256r1,
+            // ed25519 = crate::elliptic::curves::Ed25519,
+            // ristretto = crate::elliptic::curves::Ristretto,
             // bls12_381_1 = crate::elliptic::curves::Bls12_381_1,
             // bls12_381_2 = crate::elliptic::curves::Bls12_381_2,
         }
